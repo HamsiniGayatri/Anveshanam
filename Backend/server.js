@@ -28,7 +28,7 @@ app.get("/", (req,res) => {
 
 app.use("/api/items", itemRoutes);
 app.use("/api/claims", claimRoutes);
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const PORT = process.env.PORT || 5000;
 
