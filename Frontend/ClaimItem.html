@@ -860,12 +860,12 @@
 
             try {
 
-                const response = await fetch(`http://fetch("https://anveshanam-ngpy.onrender.com"):5000/api/items/${itemId}`);
+                const response = await fetch(`https://anveshanam-ngpy.onrender.com/api/items/${itemId}`);
 
                 const item = await response.json();
 
                 document.getElementById("itemImage").src =
-                    `http://fetch("https://anveshanam-ngpy.onrender.com"):5000/${item.image}`;
+                    `https://anveshanam-ngpy.onrender.com/${item.image}`;
 
                 document.getElementById("itemName").textContent =
                     item.itemName;
@@ -919,7 +919,7 @@
 
             try {
 
-                const response = await fetch("http://fetch("https://anveshanam-ngpy.onrender.com"):5000/api/claims", {
+                const response = await fetch("https://anveshanam-ngpy.onrender.com/api/claims", {
 
                     method: "POST",
 
