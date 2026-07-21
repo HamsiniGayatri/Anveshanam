@@ -5,6 +5,7 @@ const itemRoutes = require("./routes/itemRoutes");
 const claimRoutes = require("./routes/claimRoutes");
 const authRoutes = require("./routes/authRoutes");
 const accountRoutes = require("./routes/accountRoutes");
+const path = require("path");
 
 const connectDB = require("./config/db");
 
