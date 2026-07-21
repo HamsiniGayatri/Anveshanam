@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Anveshanam</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+            background: #f4f8fc;
+        }
+
+
+        /* Header */
+
+        .header {
+
+            background: #1565c0;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+
+        .header h1 {
+
+            font-size: 28px;
+
+        }
+
+
+        .admin-info {
+
+            text-align: right;
+
+        }
+
+
+        .admin-info p {
+
+            font-size: 14px;
+
+        }
+
+
+        .logout {
+
+            margin-top: 8px;
+            padding: 8px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: white;
+            color: #1565c0;
+            font-weight: bold;
+
+        }
+
+
+
+        /* Main */
+
+        .container {
+
+            padding: 40px;
+
+        }
+
+
+
+        /* Cards */
+
+        .cards {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+
+        }
+
+
+        .card {
+
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+        .card h3 {
+
+            color: #555;
+            font-size: 16px;
+
+        }
+
+
+        .card p {
+
+            font-size: 32px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-top: 10px;
+
+        }
+
+
+
+        /* Actions */
+
+
+        .section-title {
+
+            margin-bottom: 20px;
+            color: #333;
+
+        }
+
+
+
+        .actions {
+
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+        }
+
+
+
+        .action-btn {
+
+            background: #1565c0;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+
+
+        .action-btn:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        /* Claims */
+
+        .claim-box {
+
+            margin-top: 35px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <header class="header">
+
+
+        <div>
+
+            <h1>
+                🔎 Anveshanam
+            </h1>
+
+            <p>
+                Security Administration Portal
+            </p>
+
+        </div>
+
+
+
+        <div class="admin-info">
+
+            <p id="adminName">
+                Security Office
+            </p>
+
+            <button class="logout" onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+
+    </header>
+
+
+
+
+
+    <div class="container">
+
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Total Claims
+                </h3>
+
+                <p id="totalClaims">
+                    0
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    Pending Claims
+                </h3>
+
+                <p id="pendingClaims">
+                    0
+                </p>
+
+            </div>
+
+
+
+
+            <div class="card">
+
+                <h3>
+                    Approved Claims
+                </h3>
+
+                <p id="claimedClaims">
+                    0
+                </p>
+
+            </div>
+
+
+
+
+            <div class="card">
+
+                <h3>
+                    Rejected Claims
+                </h3>
+
+                <p id="rejectedClaims">
+                    0
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
+
+
+        <div class="actions">
+
+
+            <button class="action-btn" onclick="window.location.href='manageClaims.html'">
+
+                Manage Claims
+
+            </button>
+
+
+
+            <button class="action-btn" onclick="window.location.href='Home.html'">
+
+                View Portal
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <div class="claim-box">
+
+
+            <h2>
+                Recent Claims
+            </h2>
+
+
+            <p>
+                Claims will appear here after connecting backend.
+            </p>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script>
+
+        async function loadStats() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:5000/api/claims/stats"
+                );
+
+
+                const data = await response.json();
+
+
+                document.getElementById("totalClaims").innerText =
+                    data.total;
+
+
+                document.getElementById("pendingClaims").innerText =
+                    data.pending;
+
+
+                document.getElementById("claimedClaims").innerText =
+                    data.claimed;
+
+
+                document.getElementById("rejectedClaims").innerText =
+                    data.rejected;
+
+
+
+            }
+            catch (error) {
+
+                console.log(error);
+
+            }
+
+        }
+
+
+        loadStats();
+
+        const user = JSON.parse(
+            localStorage.getItem("user")
+        );
+
+
+
+        if (!user || user.role !== "admin") {
+
+            alert("Access Denied");
+
+            window.location.href = "Login.html";
+
+        }
+
+
+
+        if (user) {
+
+            document.getElementById("adminName").innerHTML =
+                "Welcome, " + user.name;
+
+        }
+
+
+
+        function logout() {
+
+            localStorage.removeItem("token");
+
+            localStorage.removeItem("user");
+
+            window.location.href = "Login.html";
+
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

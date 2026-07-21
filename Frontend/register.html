@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Anveshanam</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        body {
+
+            height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: #09090B;
+
+            color: white;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* BACKGROUND GLOW */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 550px;
+
+            height: 550px;
+
+            background: #7C3AED;
+
+            filter: blur(180px);
+
+            top: -180px;
+
+            left: -180px;
+
+            opacity: .35;
+
+            z-index: -2;
+
+        }
+
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+
+            height: 500px;
+
+            background: #9333EA;
+
+            filter: blur(170px);
+
+            bottom: -200px;
+
+            right: -160px;
+
+            opacity: .25;
+
+            z-index: -2;
+
+        }
+
+
+
+        /* GRID */
+
+        .grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(rgba(255, 255, 255, .03) 1px,
+                    transparent 1px),
+
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .03) 1px,
+                    transparent 1px);
+
+
+            background-size: 55px 55px;
+
+            z-index: -1;
+
+        }
+
+
+
+
+        /* REGISTER CARD */
+
+
+        .container {
+
+            width: 420px;
+
+            padding: 40px;
+
+
+            background: rgba(255, 255, 255, .05);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            backdrop-filter: blur(18px);
+
+
+            border-radius: 28px;
+
+
+            box-shadow:
+
+                0 20px 45px rgba(0, 0, 0, .4);
+
+
+        }
+
+
+
+        .container h1 {
+
+            text-align: center;
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+
+            color: white;
+
+
+            -webkit-text-stroke: .5px #A855F7;
+
+
+            text-shadow:
+
+                0 0 15px rgba(168, 85, 247, .5);
+
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        .container h2 {
+
+            text-align: center;
+
+            color: #A1A1AA;
+
+            font-size: 18px;
+
+            font-weight: 400;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+
+        form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+
+
+        input {
+
+
+            width: 100%;
+
+            padding: 15px 18px;
+
+
+            background: rgba(255, 255, 255, .05);
+
+
+            border: 1px solid rgba(255, 255, 255, .1);
+
+
+            border-radius: 14px;
+
+
+            color: white;
+
+
+            font-size: 15px;
+
+
+            outline: none;
+
+
+            transition: .3s;
+
+
+        }
+
+
+
+        input::placeholder {
+
+            color: #A1A1AA;
+
+        }
+
+
+
+        input:focus {
+
+
+            border-color: #A855F7;
+
+
+            box-shadow:
+
+                0 0 20px rgba(168, 85, 247, .25);
+
+
+        }
+
+
+
+
+        button {
+
+
+            margin-top: 10px;
+
+
+            padding: 16px;
+
+
+            border: none;
+
+
+            border-radius: 15px;
+
+
+            background:
+
+                linear-gradient(135deg,
+                    #8B5CF6,
+                    #A855F7);
+
+
+            color: white;
+
+
+            font-size: 17px;
+
+
+            font-weight: 600;
+
+
+            cursor: pointer;
+
+
+            transition: .35s;
+
+
+        }
+
+
+
+        button:hover {
+
+
+            transform: translateY(-4px);
+
+
+            box-shadow:
+
+                0 15px 35px rgba(168, 85, 247, .45);
+
+
+        }
+
+
+
+
+        .login-link {
+
+
+            margin-top: 25px;
+
+
+            text-align: center;
+
+
+            color: #A1A1AA;
+
+
+            font-size: 15px;
+
+
+        }
+
+
+
+        .login-link a {
+
+
+            color: #A855F7;
+
+
+            text-decoration: none;
+
+
+            font-weight: 600;
+
+
+        }
+
+
+
+        .login-link a:hover {
+
+
+            text-decoration: underline;
+
+
+        }
+
+
+
+        @media(max-width:500px) {
+
+            .container {
+
+                width: 90%;
+
+                padding: 30px;
+
+            }
+
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+    <div class="grid"></div>
+
+
+
+    <div class="container">
+
+
+        <h1>
+
+            Anveshanam
+
+        </h1>
+
+
+        <h2>
+
+            Create Your Account
+
+        </h2>
+
+
+
+        <form id="registerForm">
+
+
+            <input type="text" id="studentId" placeholder="Student ID" required>
+
+
+            <input type="text" id="name" placeholder="Full Name" required>
+
+
+
+            <input type="email" id="email" placeholder="College Email" required>
+
+
+
+            <input type="password" id="password" placeholder="Password" required>
+
+
+
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+
+
+            <button type="submit">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                &nbsp;
+
+                Register
+
+            </button>
+
+
+
+        </form>
+
+
+
+        <div class="login-link">
+
+
+            Already have an account?
+
+            <a href="Login.html">
+
+                Login
+
+            </a>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script>
+
+
+        const form = document.getElementById("registerForm");
+
+
+
+        form.addEventListener("submit", async (e) => {
+
+
+            e.preventDefault();
+
+
+
+            const studentId = document.getElementById("studentId").value.trim();
+
+            const name = document.getElementById("name").value.trim();
+
+            const email = document.getElementById("email").value.trim();
+
+            const password = document.getElementById("password").value;
+
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+
+
+            if (password !== confirmPassword) {
+
+                alert("Passwords do not match");
+
+                return;
+
+            }
+
+
+
+            try {
+
+
+                const response = await fetch(
+                    "http://localhost:5000/api/auth/register",
+                    {
+
+
+                        method: "POST",
+
+
+                        headers: {
+
+                            "Content-Type": "application/json"
+
+                        },
+
+
+                        body: JSON.stringify({
+
+                            studentId,
+
+                            name,
+
+                            email,
+
+                            password,
+
+                            confirmPassword
+
+                        })
+
+
+                    });
+
+
+
+                const data = await response.json();
+
+
+
+                if (response.ok) {
+
+
+                    alert(data.message);
+
+
+                    window.location.href = "Login.html";
+
+
+                }
+
+                else {
+
+
+                    alert(data.message);
+
+
+                }
+
+
+
+            }
+
+            catch (error) {
+
+
+                console.log(error);
+
+
+                alert("Server Error");
+
+
+            }
+
+
+
+        });
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

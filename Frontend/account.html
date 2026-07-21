@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | Anveshanam</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+
+        body {
+
+            background: #09090B;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+
+        }
+
+
+
+        /* ================= BACKGROUND ================= */
+
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 550px;
+            height: 550px;
+
+            background: #7C3AED;
+
+            filter: blur(180px);
+
+            top: -180px;
+            left: -180px;
+
+            opacity: .30;
+
+            z-index: -2;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            background: #9333EA;
+
+            filter: blur(170px);
+
+            bottom: -200px;
+            right: -160px;
+
+            opacity: .25;
+
+            z-index: -2;
+
+        }
+
+
+
+        .grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(rgba(255, 255, 255, .03) 1px,
+                    transparent 1px),
+
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .03) 1px,
+                    transparent 1px);
+
+
+            background-size: 55px 55px;
+
+            z-index: -1;
+
+        }
+
+
+
+
+        /* ================= NAVBAR ================= */
+
+
+        .navbar {
+
+            position: fixed;
+
+            top: 20px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+
+            width: 92%;
+
+            max-width: 1400px;
+
+
+            height: 78px;
+
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+
+            padding: 0 35px;
+
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(18px);
+
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 20px;
+
+
+            z-index: 1000;
+
+
+            transition: .35s;
+
+        }
+
+
+
+        .navbar:hover {
+
+            border-color: #8B5CF6;
+
+
+            box-shadow:
+
+                0 0 35px rgba(139, 92, 246, .25);
+
+        }
+
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            color: white;
+
+        }
+
+        .logo-img {
+
+            width: 56px;
+
+            height: 56px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 35px;
+
+            list-style: none;
+
+        }
+
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #B8B8C5;
+
+            font-weight: 500;
+
+            position: relative;
+
+            transition: .3s;
+
+        }
+
+
+
+        .nav-links a:hover {
+
+            color: white;
+
+        }
+
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: -8px;
+
+            left: 0;
+
+
+            width: 0;
+
+            height: 2px;
+
+
+            background: #A855F7;
+
+
+            transition: .3s;
+
+        }
+
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+
+        /* ================= ACCOUNT HERO ================= */
+
+
+        .account-section {
+
+
+            width: 92%;
+
+            max-width: 1200px;
+
+
+            margin: 160px auto 80px;
+
+
+        }
+
+
+
+        .account-header {
+
+
+            text-align: center;
+
+            margin-bottom: 55px;
+
+
+        }
+
+
+
+        .account-header h1 {
+
+
+            font-size: 60px;
+
+            font-weight: 800;
+
+
+            color: white;
+
+
+            -webkit-text-stroke: .7px #A855F7;
+
+
+            text-shadow:
+
+                0 0 10px rgba(168, 85, 247, .5),
+
+                0 0 25px rgba(168, 85, 247, .3);
+
+
+            animation: floatTitle 4s ease-in-out infinite;
+
+
+        }
+
+
+
+        .account-header p {
+
+
+            margin-top: 15px;
+
+
+            font-size: 18px;
+
+            color: #A1A1AA;
+
+
+        }
+
+
+
+        @keyframes floatTitle {
+
+
+            0% {
+
+                transform: translateY(0);
+
+            }
+
+
+            50% {
+
+                transform: translateY(-8px);
+
+            }
+
+
+            100% {
+
+                transform: translateY(0);
+
+            }
+
+
+        }
+
+
+
+
+        /* ================= PROFILE CARD ================= */
+
+
+        .profile-card {
+
+
+            background: rgba(255, 255, 255, .05);
+
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+
+            backdrop-filter: blur(18px);
+
+
+            border-radius: 28px;
+
+
+            padding: 45px;
+
+
+            display: flex;
+
+
+            align-items: center;
+
+
+            gap: 35px;
+
+
+            box-shadow:
+
+                0 20px 45px rgba(0, 0, 0, .25);
+
+
+            transition: .35s;
+
+
+        }
+
+
+
+        .profile-card:hover {
+
+
+            border-color: #8B5CF6;
+
+
+            box-shadow:
+
+                0 20px 45px rgba(139, 92, 246, .25);
+
+
+        }
+
+
+
+
+        .avatar {
+
+
+            width: 120px;
+
+            height: 120px;
+
+
+            border-radius: 50%;
+
+
+            display: flex;
+
+
+            align-items: center;
+
+            justify-content: center;
+
+
+            font-size: 55px;
+
+
+            background:
+
+                linear-gradient(135deg,
+                    #8B5CF6,
+                    #A855F7);
+
+
+
+            box-shadow:
+
+                0 0 35px rgba(168, 85, 247, .6);
+
+
+        }
+
+
+
+        .profile-info h2 {
+
+
+            font-size: 30px;
+
+
+            margin-bottom: 20px;
+
+
+        }
+
+
+
+        .profile-info p {
+
+
+            color: #D4D4D8;
+
+
+            font-size: 17px;
+
+
+            margin: 10px 0;
+
+
+        }
+
+
+
+        .profile-info strong {
+
+
+            color: #A855F7;
+
+
+        }
+
+
+
+
+        /* ================= STATS ================= */
+
+
+        .stats-container {
+
+
+            margin-top: 40px;
+
+
+            display: grid;
+
+
+            grid-template-columns: repeat(3, 1fr);
+
+
+            gap: 25px;
+
+
+        }
+
+
+
+        .stat-card {
+
+
+            background: rgba(255, 255, 255, .05);
+
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+
+            padding: 30px;
+
+
+            border-radius: 22px;
+
+
+            text-align: center;
+
+
+        }
+
+
+
+        .stat-card h3 {
+
+
+            font-size: 35px;
+
+            color: #A855F7;
+
+
+        }
+
+
+        .stat-card p {
+
+
+            color: #A1A1AA;
+
+        }
+
+        /* ================= LOGOUT ================= */
+
+
+        .logout-container {
+
+
+            margin-top: 50px;
+
+
+            display: flex;
+
+
+            justify-content: center;
+
+
+        }
+
+
+
+        #logoutBtn {
+
+
+            padding: 16px 45px;
+
+
+            border: none;
+
+
+            border-radius: 50px;
+
+
+            background:
+
+                linear-gradient(135deg,
+                    #ef4444,
+                    #dc2626);
+
+
+            color: white;
+
+
+            font-size: 17px;
+
+
+            font-weight: 600;
+
+
+            cursor: pointer;
+
+
+            transition: .35s;
+
+
+            box-shadow:
+
+                0 0 25px rgba(239, 68, 68, .35);
+
+
+        }
+
+
+
+        #logoutBtn:hover {
+
+
+            transform: translateY(-5px);
+
+
+            box-shadow:
+
+                0 0 35px rgba(239, 68, 68, .65);
+
+
+        }
+
+
+
+
+        /* ================= FOOTER ================= */
+
+
+        .footer {
+
+
+            margin-top: 100px;
+
+
+            padding: 60px 8% 25px;
+
+
+            background:
+
+                linear-gradient(180deg,
+                    rgba(255, 255, 255, .05),
+                    rgba(255, 255, 255, .02));
+
+
+            border-top:
+
+                1px solid rgba(255, 255, 255, .08);
+
+
+        }
+
+
+
+        .footer-container {
+
+
+            display: grid;
+
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+
+            gap: 40px;
+
+
+        }
+
+
+
+        .footer-section h3,
+        .footer-section h4 {
+
+
+            color: #A855F7;
+
+
+            margin-bottom: 18px;
+
+
+        }
+
+
+
+        .footer-section p {
+
+
+            color: #A1A1AA;
+
+
+            line-height: 1.8;
+
+
+            font-size: 14px;
+
+
+        }
+
+
+
+        .footer-section a {
+
+
+            display: block;
+
+
+            text-decoration: none;
+
+
+            color: #D4D4D8;
+
+
+            margin-bottom: 10px;
+
+
+            font-size: 14px;
+
+
+            transition: .3s;
+
+
+        }
+
+
+
+        .footer-section a:hover {
+
+
+            color: #A855F7;
+
+
+            transform: translateX(6px);
+
+
+        }
+
+
+
+        .footer-bottom {
+
+
+            margin-top: 45px;
+
+
+            padding-top: 20px;
+
+
+            border-top:
+
+                1px solid rgba(255, 255, 255, .08);
+
+
+            text-align: center;
+
+
+            color: #71717A;
+
+
+            font-size: 13px;
+
+
+        }
+
+
+
+
+        /* ================= RESPONSIVE ================= */
+
+
+        @media(max-width:900px) {
+
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+
+            .profile-card {
+
+
+                flex-direction: column;
+
+                text-align: center;
+
+
+            }
+
+
+
+            .stats-container {
+
+
+                grid-template-columns: 1fr;
+
+
+            }
+
+
+
+            .account-header h1 {
+
+
+                font-size: 42px;
+
+
+            }
+
+
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="grid"></div>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+
+        <a href="Home.html" class="logo">
+
+
+            <img src="../Frontend/anveshana.jpg" class="logo-img">
+
+
+            Anveshanam
+
+
+        </a>
+
+
+
+        <ul class="nav-links">
+
+
+            <li>
+                <a href="Home.html">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="LostItem.html">
+                    Lost Items
+                </a>
+            </li>
+
+
+            <li>
+                <a href="UploadItem.html">
+                    Upload Items
+                </a>
+            </li>
+
+
+            <li>
+                <a href="../Frontend/Feedback.html">
+                    Feedback
+                </a>
+            </li>
+
+            <li>
+                <a href="account.html">
+                    Account
+                </a>
+            </li>
+
+
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+    <!-- ACCOUNT SECTION -->
+
+
+    <section class="account-section">
+
+
+
+        <div class="account-header">
+
+
+            <h1>
+                My Account
+            </h1>
+
+
+            <p>
+                Manage your profile and track your activity on Anveshanam.
+            </p>
+
+
+        </div>
+
+
+
+
+        <div class="profile-card">
+
+
+            <div class="avatar">
+
+
+                <i class="fa-solid fa-user"></i>
+
+
+            </div>
+
+
+
+            <div class="profile-info">
+
+
+                <h2>
+                    My Profile
+                </h2>
+
+
+
+                <p>
+
+                    <strong>Name:</strong>
+
+                    <span id="name"></span>
+
+                </p>
+
+
+
+                <p>
+
+                    <strong>Student ID:</strong>
+
+                    <span id="studentId"></span>
+
+                </p>
+
+
+
+                <p>
+
+                    <strong>Email:</strong>
+
+                    <span id="email"></span>
+
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="stats-container">
+
+
+            <div class="stat-card">
+
+
+                <h3>
+                    0
+                </h3>
+
+
+                <p>
+                    Uploaded Items
+                </p>
+
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+
+                <h3>
+                    0
+                </h3>
+
+
+                <p>
+                    Claims Submitted
+                </p>
+
+
+            </div>
+
+
+
+
+            <div class="stat-card">
+
+
+                <h3>
+                    Active
+                </h3>
+
+
+                <p>
+                    Account Status
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <!-- ================= LOGOUT ================= -->
+
+
+    <div class="logout-container">
+
+        <button id="logoutBtn">
+
+            Logout
+
+        </button>
+
+
+    </div>
+
+
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+
+    <footer class="footer">
+
+
+        <div class="footer-container">
+
+
+            <div class="footer-section">
+
+
+                <h3>
+                    Anveshanam
+                </h3>
+
+
+                <p>
+
+                    An AI-powered campus lost and found platform helping students recover their belongings faster and
+                    securely.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="footer-section">
+
+
+                <h4>
+                    Platform
+                </h4>
+
+
+                <a href="Home.html">
+                    Home
+                </a>
+
+
+                <a href="LostItem.html">
+                    Lost Items
+                </a>
+
+
+                <a href="UploadItem.html">
+                    Upload Item
+                </a>
+
+
+                <a href="#">
+                    Feedback
+                </a>
+
+
+            </div>
+
+
+
+
+            <div class="footer-section">
+
+
+                <h4>
+                    Support
+                </h4>
+
+
+                <a href="#">
+                    Safety Guidelines
+                </a>
+
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+
+                <a href="#">
+                    Terms & Conditions
+                </a>
+
+
+                <a href="#">
+                    Contact Us
+                </a>
+
+
+            </div>
+            <div class="footer-section">
+
+
+                <h4>
+                    Follow Us
+                </h4>
+
+
+                <a href="#">
+                    Instagram
+                </a>
+
+
+                <a href="#">
+                    LinkedIn
+                </a>
+
+
+                <a href="#">
+                    GitHub
+                </a>
+
+
+            </div>
+
+
+        </div>
+        <div class="footer-bottom">
+            <p>
+
+                © 2026 Anveshanam. All rights reserved.
+
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "login.html";
+        }
+        const user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("name").textContent = user.name;
+        document.getElementById("studentId").textContent = user.studentId;
+        document.getElementById("email").textContent = user.email;
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            const confirmLogout = confirm("Are you sure you want to logout?");
+            if (confirmLogout) {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                window.location.href = "Login.html";
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

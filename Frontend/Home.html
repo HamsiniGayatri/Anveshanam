@@ -1,0 +1,1306 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anveshanam</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 550px;
+
+            height: 550px;
+
+            background: #7C3AED;
+
+            filter: blur(170px);
+
+            top: -180px;
+
+            left: -180px;
+
+            opacity: .28;
+
+            z-index: -2;
+
+        }
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+
+            height: 500px;
+
+            background: #9333EA;
+
+            filter: blur(180px);
+
+            bottom: -200px;
+
+            right: -150px;
+
+            opacity: .22;
+
+            z-index: -2;
+
+        }
+
+        body {
+
+            background: #09090B;
+
+            color: white;
+
+            overflow-x: hidden;
+
+            position: relative;
+
+        }
+
+        .grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+
+                linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+
+            background-size: 55px 55px;
+
+            z-index: -1;
+
+            pointer-events: none;
+
+        }
+
+        .navbar {
+
+            position: fixed;
+
+            top: 20px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            height: 78px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 20px;
+
+            z-index: 1000;
+
+            transition: .35s;
+
+        }
+
+        .navbar:hover {
+
+            border-color: rgba(139, 92, 246, .45);
+
+            box-shadow:
+
+                0 0 35px rgba(139, 92, 246, .18);
+
+        }
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            color: white;
+
+        }
+
+        .logo-img {
+
+            width: 56px;
+
+            height: 56px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 35px;
+
+        }
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #B8B8C5;
+
+            font-weight: 500;
+
+            transition: .3s;
+
+            position: relative;
+
+        }
+
+        .nav-links a:hover {
+
+            color: white;
+
+        }
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: -8px;
+
+            left: 0;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #8B5CF6;
+
+            transition: .3s;
+
+        }
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+        .hero {
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding-top: 120px;
+
+            gap: 70px;
+
+        }
+
+        .hero-left {
+
+            flex: 1;
+
+        }
+
+        .hero-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 10px 20px;
+
+            background: rgba(139, 92, 246, .12);
+
+            border: 1px solid rgba(139, 92, 246, .3);
+
+            border-radius: 50px;
+
+            color: #C4B5FD;
+
+            margin-bottom: 30px;
+
+            font-size: 15px;
+
+            backdrop-filter: blur(10px);
+
+        }
+
+        .hero h1 {
+
+            font-size: 72px;
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            margin-bottom: 25px;
+
+        }
+
+        .hero span {
+
+            background: linear-gradient(90deg,
+                    #A855F7,
+                    #C084FC);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .hero p {
+
+            max-width: 600px;
+
+            font-size: 18px;
+
+            line-height: 1.9;
+
+            color: #A1A1AA;
+
+            margin-bottom: 40px;
+
+        }
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 20px;
+
+        }
+
+        .primary-btn {
+
+            padding: 16px 32px;
+
+            border-radius: 14px;
+
+            background: linear-gradient(135deg,
+                    #8B5CF6,
+                    #A855F7);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: .35s;
+
+        }
+
+        .secondary-btn {
+
+            padding: 16px 32px;
+
+            border-radius: 14px;
+
+            border: 1px solid rgba(255, 255, 255, .15);
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(12px);
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: .35s;
+
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 35px rgba(139, 92, 246, .35);
+
+        }
+
+        .hero-right {
+
+            flex: 1;
+
+            display: flex;
+
+            justify-content: center;
+
+        }
+
+        .hero-right img {
+
+            width: 100%;
+
+            max-width: 550px;
+
+            border-radius: 30px;
+
+            animation: float 5s ease-in-out infinite;
+
+            filter: drop-shadow(0 0 45px rgba(139, 92, 246, .35));
+
+            
+
+        }
+
+        @keyframes float {
+
+            0% {
+
+                transform: translateY(0);
+
+            }
+
+            50% {
+
+                transform: translateY(-18px);
+
+            }
+
+            100% {
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+        .stats {
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            margin: 0 auto 120px;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 30px;
+
+        }
+
+        .stat-card {
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            text-align: center;
+
+            transition: .35s;
+
+        }
+
+        .stat-card:hover {
+
+            transform: translateY(-10px);
+
+            border-color: #8B5CF6;
+
+            box-shadow:
+
+                0 0 35px rgba(139, 92, 246, .18);
+
+        }
+
+        .stat-card h2 {
+
+            font-size: 46px;
+
+            color: #A855F7;
+
+            margin-bottom: 12px;
+
+            font-weight: 700;
+
+        }
+
+        .stat-card p {
+
+            color: #B4B4C7;
+
+            font-size: 16px;
+
+        }
+
+        .how-it-works {
+
+            width: 92%;
+            max-width: 1400px;
+            margin: 140px auto;
+
+        }
+
+        .timeline {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 35px;
+
+            margin-top: 80px;
+
+        }
+
+        .timeline-line {
+
+            position: absolute;
+
+            top: 22px;
+
+            left: 16%;
+
+            width: 68%;
+
+            height: 3px;
+
+            background: linear-gradient(90deg,
+                    #8B5CF6,
+                    #C084FC);
+
+            z-index: 0;
+
+            border-radius: 50px;
+
+        }
+
+        .timeline-step {
+
+            position: relative;
+
+            text-align: center;
+
+            z-index: 2;
+
+        }
+
+        .step-circle {
+
+            width: 48px;
+
+            height: 48px;
+
+            margin: 0 auto 35px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: #8B5CF6;
+
+            color: white;
+
+            font-weight: 700;
+
+            box-shadow: 0 0 25px rgba(139, 92, 246, .45);
+
+        }
+
+        .step-card {
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 24px;
+
+            padding: 40px 30px;
+
+            transition: .35s;
+
+        }
+
+        .step-card:hover {
+
+            transform: translateY(-12px);
+
+            border-color: #8B5CF6;
+
+            box-shadow: 0 20px 45px rgba(139, 92, 246, .25);
+
+        }
+
+        .step-icon {
+
+            width: 72px;
+
+            height: 72px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: linear-gradient(135deg,
+                    #8B5CF6,
+                    #A855F7);
+
+            font-size: 28px;
+
+        }
+
+        .step-card h3 {
+
+            margin-bottom: 15px;
+
+            font-size: 24px;
+
+        }
+
+        .step-card p {
+
+            color: #A1A1AA;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+
+        }
+
+        .features {
+
+            width: 92%;
+
+            max-width: 1400px;
+
+            margin: 140px auto;
+
+        }
+
+        .section-header {
+
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+
+        }
+
+        .section-header span {
+
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            background: rgba(139, 92, 246, .12);
+
+            border: 1px solid rgba(139, 92, 246, .25);
+
+            border-radius: 50px;
+
+            color: #C4B5FD;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            backdrop-filter: blur(10px);
+
+            margin-bottom: 25px;
+
+        }
+
+        .section-header h2 {
+
+            font-size: 52px;
+
+            font-weight: 700;
+
+            line-height: 1.2;
+
+            color: #fff;
+
+            margin-bottom: 22px;
+
+        }
+
+        .section-header p {
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #A1A1AA;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .feature-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 30px;
+
+            margin-top: 60px;
+
+        }
+
+        .feature-card {
+
+            padding: 35px;
+
+            background: rgba(255, 255, 255, .05);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+
+            border-radius: 24px;
+
+            transition: .35s;
+
+        }
+
+        .feature-card:hover {
+
+            transform: translateY(-10px);
+
+            border-color: #8B5CF6;
+
+            box-shadow:
+
+                0 15px 40px rgba(139, 92, 246, .25);
+
+        }
+
+        .feature-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 28px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(135deg,
+                    #8B5CF6,
+                    #A855F7);
+
+            margin-bottom: 25px;
+
+        }
+
+        .feature-card h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 18px;
+
+        }
+
+        .feature-card p {
+
+            color: #A1A1AA;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+
+        }
+
+        .footer {
+
+            width: 100%;
+
+            margin-top: 140px;
+
+            padding: 80px 8% 30px;
+
+            background: rgba(255, 255, 255, .03);
+
+            border-top: 1px solid rgba(255, 255, 255, .08);
+
+        }
+
+        .footer-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 80px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .footer-brand {
+
+            flex: 1;
+
+            max-width: 400px;
+
+        }
+
+        .footer-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .footer-brand h2 {
+
+            margin-bottom: 15px;
+
+        }
+
+        .footer-brand p {
+
+            color: #A1A1AA;
+
+            line-height: 1.8;
+
+        }
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 80px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .footer-links h3 {
+
+            margin-bottom: 20px;
+
+        }
+
+        .footer-links a {
+
+            display: block;
+
+            text-decoration: none;
+
+            color: #A1A1AA;
+
+            margin-bottom: 12px;
+
+            transition: .3s;
+
+        }
+
+        .footer-links a:hover {
+
+            color: #A855F7;
+
+        }
+
+        .footer-bottom {
+
+            margin-top: 50px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255, 255, 255, .08);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        .social-icons {
+
+            display: flex;
+
+            gap: 18px;
+
+        }
+
+        .social-icons a {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, .05);
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: .3s;
+
+        }
+
+        .social-icons a:hover {
+
+            background: #8B5CF6;
+
+            transform: translateY(-5px);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid"></div>
+
+    <div class="navbar">
+        <a href="#" class="logo">
+            <img src="../Frontend/anveshana.jpg" alt="Anveshana Logo" class="logo-img">
+            Anveshana
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../Frontend/Home.html">Home</a></li>
+            <li><a href="../Frontend/LostItem.html">Lost Items</a></li>
+            <li><a href="../Frontend/UploadItem.html">Upload Items</a></li>
+            <li><a href="../Frontend/Feedback.html">Feedback</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+    </div>
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                AI Powered Campus Platform
+            </div>
+
+            <h1>
+                Lost Something <br>
+                <span>on Campus?</span>
+            </h1>
+
+            <p>
+                Recover your belongings through intelligent AI matching,
+                secure claim verification, and a centralized campus lost &
+                found platform built exclusively for students.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#" class="primary-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Report Item
+                </a>
+
+                <a href="#" class="secondary-btn">
+                    Browse Items
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+
+            <img src="../Frontend/image.png" alt="AI Illustration">
+
+        </div>
+
+    </section>
+
+    </div>
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h2>120+</h2>
+
+            <p>Recovered Items</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>600+</h2>
+
+            <p>Campus Users</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>95%</h2>
+
+            <p>Successful Claims</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>24/7</h2>
+
+            <p>AI Matching</p>
+
+        </div>
+
+    </section>
+
+    <section class="how-it-works">
+
+        <div class="section-header">
+
+            <span>HOW IT WORKS</span>
+
+            <h2>Recover Your Belongings in Three Simple Steps</h2>
+
+            <p>
+                A simple, secure and organized process to reconnect students with their belongings.
+            </p>
+
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-line"></div>
+
+            <div class="timeline-step">
+
+                <div class="step-circle">01</div>
+
+                <div class="step-card">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-upload"></i>
+                    </div>
+
+                    <h3>Upload Item</h3>
+
+                    <p>
+                        Report your lost or found item with images,
+                        description and location.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-step">
+
+                <div class="step-circle">02</div>
+
+                <div class="step-card">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <h3>Find Listing</h3>
+
+                    <p>
+                        Browse reported items and identify the
+                        listing that matches yours.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-step">
+
+                <div class="step-circle">03</div>
+
+                <div class="step-card">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+
+                    <h3>Secure Claim</h3>
+
+                    <p>
+                        Submit a claim and recover your belongings
+                        after verification.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="features">
+
+        <div class="section-header">
+
+            <span>WHY CHOOSE ANVESHANAM</span>
+
+            <h2>Built for a Safer Campus Community</h2>
+
+            <p>
+                Designed to make reporting, finding, and reclaiming lost belongings
+                simple, secure, and accessible for every student.
+            </p>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>Secure Claims</h3>
+
+                <p>
+                    Every recovery request goes through a claim process,
+                    allowing the finder to verify the rightful owner.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+
+                <h3>Campus Exclusive</h3>
+
+                <p>
+                    Built specifically for college students, creating a trusted
+                    environment for reporting and recovering lost items.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+
+                <h3>Image-Based Reports</h3>
+
+                <p>
+                    Upload photos along with item details to make
+                    identification faster and more reliable.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <h3>Quick Recovery</h3>
+
+                <p>
+                    From reporting an item to recovering it,
+                    the process is designed to be simple and efficient.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <img src="../Frontend/anveshana.jpg" class="footer-logo">
+
+                <h2>Anveshanam</h2>
+
+                <p>
+                    AI-Powered Campus Lost & Found Platform helping students
+                    reconnect with their belongings through a secure and
+                    intelligent reporting system.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div>
+
+                    <h3>Quick Links</h3>
+
+                    <a href="#">Home</a>
+                    <a href="LostItem.html">Lost Items</a>
+                    <a href="UploadItem.html">Upload Item</a>
+                    <a href="account.html">Account</a>
+
+                </div>
+
+                <div>
+
+                    <h3>Resources</h3>
+
+                    <a href="#">About</a>
+                    <a href="#">Feedback</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms</a>
+
+                </div>
+
+                <div>
+
+                    <h3>Contact</h3>
+
+                    <a href="#">support@anveshanam.in</a>
+                    <a href="#">Pragati Engineering College</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Anveshanam. All Rights Reserved.
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+<script>
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        window.location.href = "Login.html";
+    }
+</script>
+
+</html>

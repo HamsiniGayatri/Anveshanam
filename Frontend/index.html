@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        const token = localStorage.getItem("token");
+
+        if(token){
+            window.location.href = "Home.html";
+        }
+        else{
+            window.location.href = "Login.html";
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

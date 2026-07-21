@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Claims | Anveshanam</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1565c0;
+        }
+
+        #claimsContainer {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+            gap: 25px;
+
+        }
+
+        .card {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+        }
+
+        .card h2 {
+
+            margin-bottom: 15px;
+
+            color: #1565c0;
+
+        }
+
+        .card p {
+
+            margin: 8px 0;
+
+        }
+
+        .buttons {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            gap: 15px;
+
+        }
+
+        .approve {
+
+            background: #2e7d32;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 20px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+        .reject {
+
+            background: #d32f2f;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 20px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Manage Claims</h1>
+
+    <div id="claimsContainer"></div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || user.role !== "admin") {
+            alert("Access Denied");
+            window.location.href = "Login.html";
+        }
+
+        async function loadClaims() {
+
+            const response = await fetch("http://localhost:5000/api/claims");
+
+            const claims = await response.json();
+
+            const container = document.getElementById("claimsContainer");
+
+            container.innerHTML = "";
+
+            claims.forEach(claim => {
+
+                container.innerHTML += `
+
+        <div class="card">
+
+        <h2>${claim.itemId.itemName}</h2>
+
+        <p><strong>Claimant:</strong> ${claim.claimantName}</p>
+
+        <p><strong>Branch:</strong> ${claim.branch}</p>
+
+        <p><strong>College ID:</strong> ${claim.collegeId}</p>
+
+        <p><strong>Phone:</strong> ${claim.phone}</p>
+
+        <p><strong>Lost Location:</strong> ${claim.lostLocation}</p>
+
+        <p><strong>Description:</strong> ${claim.description}</p>
+
+        <p><strong>Status:</strong> ${claim.status}</p>
+
+    <div class="buttons">
+
+        <button class="approve"
+        onclick="approveClaim('${claim._id}')">
+
+        Approve
+
+        </button>
+
+        <button class="reject"
+        onclick="rejectClaim('${claim._id}')">
+
+        Reject
+
+        </button>
+
+        </div>
+
+        </div>
+
+        `;
+
+            });
+
+        }
+
+        async function approveClaim(id) {
+
+            const response = await fetch(
+
+                `http://localhost:5000/api/claims/approve/${id}`,
+
+                {
+
+                    method: "PUT"
+
+                });
+
+            const data = await response.json();
+
+            alert(data.message);
+
+            loadClaims();
+
+        }
+
+        async function rejectClaim(id) {
+
+            const response = await fetch(
+
+                `http://localhost:5000/api/claims/reject/${id}`,
+
+                {
+
+                    method: "PUT"
+
+                });
+
+            const data = await response.json();
+
+            alert(data.message);
+
+            loadClaims();
+
+        }
+
+        loadClaims();
+
+    </script>
+
+</body>
+
+</html>
